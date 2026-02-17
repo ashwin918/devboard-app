@@ -44,7 +44,7 @@ function App() {
             onChange={(e) => setMessage(e.target.value)}
             required
           />
-          <button type="submit">Post It 🔥</button>
+          <button type="submit">stake It 🔥</button>
         </form>
       </div>
 
