@@ -11,7 +11,8 @@ pipeline {
         DOCKERHUB_CREDENTIALS = "dockerhub-cred1"
 
         // 🔥 CHANGE THESE TO MATCH YOUR POSTGRES DETAILS
-        DATABASE_URL = "postgresql://postgres:postgres@host.docker.internal:5432/devboard"
+        DATABASE_URL = "postgresql://postgres:ashwin123@host.docker.internal:5432/devboard"
+
         PORT = "5000"
     }
 
