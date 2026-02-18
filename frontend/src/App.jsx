@@ -4,6 +4,7 @@ import axios from "axios";
 const API = "http://3.27.128.200:5000/api/announcements";
 
 
+
 function App() {
   const [title, setTitle] = useState("");
   const [message, setMessage] = useState("");
