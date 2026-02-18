@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const API = "http://localhost:5000/api/announcements";
+const API = "http://3.27.128.200:5000/api/announcements";
+
 
 function App() {
   const [title, setTitle] = useState("");
