@@ -1,4 +1,3 @@
-
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
@@ -8,13 +7,12 @@ dotenv.config();
 
 const app = express();
 
-// Middleware
 app.use(cors());
 app.use(express.json());
 
-// ================================
-// Create table if not exists
-// ================================
+/* -------------------------------
+   Create Table If Not Exists
+---------------------------------*/
 const createTable = async () => {
   try {
     await pool.query(`
@@ -25,7 +23,7 @@ const createTable = async () => {
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       );
     `);
-    console.log("Table checked/created successfully");
+    console.log("Table ready");
   } catch (err) {
     console.error("Error creating table:", err.message);
   }
@@ -33,13 +31,13 @@ const createTable = async () => {
 
 createTable();
 
-// ================================
-// Routes
-// ================================
+/* -------------------------------
+   Routes
+---------------------------------*/
 
-// Health check route (VERY IMPORTANT for testing)
+// Health check route (IMPORTANT for EC2 & Render)
 app.get("/", (req, res) => {
-  res.send("DevBoard Backend is running 🚀");
+  res.send("DevBoard Backend Running 🚀");
 });
 
 // Add Announcement
@@ -53,7 +51,6 @@ app.post("/api/announcements", async (req, res) => {
     );
     res.json(newPost.rows[0]);
   } catch (err) {
-    console.error(err);
     res.status(500).json({ error: err.message });
   }
 });
@@ -66,16 +63,17 @@ app.get("/api/announcements", async (req, res) => {
     );
     res.json(posts.rows);
   } catch (err) {
-    console.error(err);
     res.status(500).json({ error: err.message });
   }
 });
 
-// ================================
-// Server Listen (IMPORTANT FIX)
-// ================================
+/* -------------------------------
+   Server Start
+---------------------------------*/
+
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server running on port ${PORT}`);
 });
+
