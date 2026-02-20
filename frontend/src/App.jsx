@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const API = "http://13.239.118.100:5000/api/announcements";
+const API = "http://3.27.46.245:5000/api/announcements";
 
 
 function App() {
